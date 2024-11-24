@@ -1,0 +1,78 @@
+# Ignorar dependências PHP
+/vendor/
+
+# Ignorar dependências Node.js
+/node_modules/
+
+# Ignorar arquivos de log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar logs específicos da aplicação
+/storage/logs/
+
+# Ignorar arquivos de sistema operacionais
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos temporários
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Ignorar uploads temporários
+/public/uploads/tmp/
+
+# Ignorar cache do Composer
+composer.lock
+
+# Ignorar arquivos de configuração locais
+.env
+.env.local
+.env.*.local
+
+# Ignorar cache do PHPStorm/IDEA
+.idea/
+*.iml
+
+# Ignorar arquivos gerados pelo build
+/build/
+dist/
+
+# Terraform
+
+# Ignorar arquivos de configuração do Terraform
+*.tfstate
+*.tfstate.*
+
+# Ignorar arquivos de plano do Terraform
+*.tfplan
+
+# Ignorar arquivos de backup do Terraform
+*.bak
+
+# Ignorar arquivos de configuração locais
+override.tf
+override.tf.json
+*override.tf
+*override.tf.json
+
+# Ignorar o diretório de módulos do Terraform (se estiver utilizando módulos locais)
+infra/terraform/.terraform/
+
+# Ignorar arquivos de configuração de credenciais do Terraform
+terraform.tfvars
+terraform.tfvars.json
+
+# Ignorar o arquivo de variáveis e variáveis de exemplo
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Ignorar o arquivo de log do Terraform
+*.log
+
+# Ignorar arquivos gerados durante o uso do Terraform
+.terraform.lock.hcl

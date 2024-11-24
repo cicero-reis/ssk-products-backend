@@ -1,0 +1,75 @@
+version: "3.8"
+
+networks:
+  catalog_network:
+    name: catalog_network
+    driver: bridge
+
+volumes:
+  catalog_mysql:
+    name: catalog_mysql
+    driver: local
+  catalog_localstack:
+    name: catalog_localstack
+    driver: local
+
+services:
+  app:
+    image: ciceroreis/php8.2:latest
+    container_name: app
+    restart: unless-stopped
+    environment:
+      - TZ=America/Sao_Paulo=value
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - mysql
+      - nginx
+    networks:
+      - catalog_network
+
+  nginx:
+    image: ciceroreis/nginx.alpine:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "5000:80"
+    volumes:
+      - ./:/var/www
+    networks:
+      - catalog_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: database
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_TIMEZONE: 'America/Sao_Paulo'
+    command: --default-time-zone='America/Sao_Paulo'
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - catalog_mysql:/var/lib/mysql
+    networks:
+      - catalog_network
+
+  localstack:
+    image: localstack/localstack
+    container_name: aws_localstack
+    ports:
+      - "127.0.0.1:4566:4566" # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559" # external services port range
+    environment:
+      - DEBUG=${DEBUG:-0}
+    volumes:
+      - catalog_localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks: 
+      - catalog_network

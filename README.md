@@ -1,0 +1,119 @@
+# **Product Microservice**
+
+Este repositório contém o microserviço **Product**, parte do sistema **Self-Service Kiosks**. Ele gerencia as operações relacionadas aos produtos, incluindo cadastro, edição, consulta e exclusão, além de suportar o armazenamento de imagens no AWS S3.
+
+---
+
+## **Índice**
+1. [Descrição](#descrição)
+2. [Principais Tecnologias](#principais-tecnologias)
+3. [Arquitetura](#arquitetura)
+4. [Pré-requisitos](#pré-requisitos)
+5. [Configuração e Execução](#configuração-e-execução)
+6. [Estrutura de Pastas](#estrutura-de-pastas)
+7. [Principais Endpoints](#principais-endpoints)
+8. [Licença](#licença)
+
+---
+
+## **Descrição**
+O **Product Microservice** é responsável pelo gerenciamento de produtos dentro do sistema **Self-Service Kiosks**. Ele segue o padrão de **Clean Architecture** para garantir uma separação clara entre as camadas de Domain, Application, Infrastructure e Presentation.
+
+---
+
+## **Principais Tecnologias**
+- **Slim Framework 4**: Framework PHP para criação de APIs leves e rápidas.
+- **Clean Architecture**: Design orientado a manutenibilidade e escalabilidade.
+- **Docker**: Contêinerização para garantir portabilidade.
+- **AWS S3**: Armazenamento de imagens de produtos.
+- **Terraform**: Gerenciamento de infraestrutura como código (IaC).
+- **Nginx**: Servidor web para proxy reverso.
+- **Node.js**: Gerenciamento de hooks e tarefas assíncronas.
+- **MySQL 8**: Banco de dados relacional de alta performance, utilizado para armazenar as informações de produtos, com suporte a consultas otimizadas e novos recursos como window functions e JSON.
+
+---
+
+## **Arquitetura**
+O microserviço segue os princípios da **Clean Architecture**, dividindo-se em:
+1. **Domain**: Regras de negócio.
+2. **Application**: Casos de uso.
+3. **Infrastructure**: Integração com banco de dados, S3 e outros serviços externos.
+4. **Presentation**: Controladores e rotas da API.
+
+---
+
+## **Pré-requisitos**
+Antes de iniciar, verifique se você possui as seguintes ferramentas instaladas:
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Terraform](https://www.terraform.io/)
+- [Node.js](https://nodejs.org/)
+
+---
+
+## **Configuração e Execução**
+### **1. Clone o repositório:**
+```bash
+git clone https://github.com/seu-usuario/ssk-products-backend.git
+cd ssk-products-backend
+```
+
+### **2. Configure as variáveis de ambiente:**
+Crie um arquivo `.env` com base no `.env.example` e configure:
+- Credenciais do AWS S3.
+- Configurações do banco de dados.
+- Porta de execução.
+
+### **3. Suba os contêineres com Docker Compose:**
+```bash
+docker-compose up --build
+```
+
+### **4. Aplique a infraestrutura com Terraform (opcional):**
+```bash
+cd terraform
+terraform init
+terraform apply
+```
+
+### **5. Acesse o microserviço:**
+A API estará disponível em: `http://localhost:8080`
+
+---
+
+## **Estrutura de Pastas**
+```plaintext
+app/
+├── Domain/          # Entidades e interfaces de domínio.
+├── Application/     # Casos de uso e serviços de aplicação.
+├── Infrastructure/  # Repositórios, S3 e banco de dados.
+├── Presentation/    # Rotas e controladores da API.
+├── IoC/             # Responsável por centralizar as configurações de Inversão de Controle (IoC)
+docker-compose.yml   # Configuração dos contêineres.
+terraform/           # Configuração de infraestrutura com Terraform.
+.env.example         # Arquivo de exemplo para configuração de variáveis.
+```
+
+---
+
+## **Principais Endpoints**
+### **Products**
+| Método | Endpoint                | Descrição                        |
+|--------|-------------------------|----------------------------------|
+| GET    | `/api/products/search`  | Lista todos os produtos.         |
+| POST   | `/api/products`         | Cria um novo produto.            |
+| GET    | `/api/products/{id}`    | Obtém detalhes de um produto.    |
+| PUT    | `/api/products/{id}`    | Atualiza um produto existente.   |
+| DELETE | `/api/products/{id}`    | Remove um produto.               |
+
+### **Files**
+| Método | Endpoint                           | Descrição                        |
+|--------|------------------------------------|----------------------------------|
+| POST   | `/api/products/{id}/files`         | Faz upload de uma imagem.        |
+| GET    | `/api/products/{id}/files`         | Lista imagens do produto.        |
+| DELETE | `/api/products/images/{id}/files`  | Remove uma imagem específica.    |
+
+## **Licença**
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---

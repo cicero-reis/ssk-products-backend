@@ -1,0 +1,11 @@
+# Use a imagem base do Nginx Alpine
+FROM nginx:alpine
+
+# Copie suas configurações de Nginx para o contêiner
+COPY ./nginx/ /etc/nginx/conf.d/
+
+# Exponha a porta 80 para o tráfego HTTP
+EXPOSE 80
+
+# Inicie o Nginx (a imagem base já faz isso por padrão)
+CMD ["nginx", "-g", "daemon off;"]

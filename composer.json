@@ -1,0 +1,43 @@
+{
+  "autoload": {
+    "classmap": [
+      "database/seeds",
+      "database/factories"
+    ],
+    "psr-4": {
+      "Catalog\\": "app",
+      "Catalog\\Tests\\": "tests",
+      "PhpCsFixer\\": "vendor/friendsofphp/php-cs-fixer/app/"
+    }
+  },
+  "require": {
+    "slim/slim": "^4.14",
+    "slim/psr7": "^1.7",
+    "php-di/php-di": "^7.0",
+    "illuminate/database": "^11.27",
+    "vlucas/phpdotenv": "^5.6",
+    "dopesong/slim-whoops": "^2.3",
+    "filp/whoops": "^2.16",
+    "middlewares/whoops": "^2.0",
+    "monolog/monolog": "^3.7",
+    "nesbot/carbon": "^3.8",
+    "illuminate/events": "^11.27",
+    "illuminate/filesystem": "^11.27",
+    "zircote/swagger-php": "^4.11",
+    "aws/aws-sdk-php": "^3.325",
+    "symfony/var-dumper": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.3",
+    "squizlabs/php_codesniffer": "*",
+    "friendsofphp/php-cs-fixer": "^3.64"
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "test-unit-coverage": "./vendor/bin/phpunit --configuration phpunit.xml --coverage-html tests/Unit/Reports --colors=never",
+    "test-feature-coverage": "./vendor/bin/phpunit --configuration phpunit.xml --coverage-html tests/Feature/Reports --colors=never",
+    "test-exceptions-coverage": "./vendor/bin/phpunit --configuration phpunit.xml --coverage-html tests/Exceptions/Reports --colors=never"
+  }
+}
