@@ -115,7 +115,7 @@ terraform/           # Configuração de infraestrutura com Terraform.
 
 ## Fluxo de Requisição: Obter Produtos
 
-![Diagrama de Sequência](public/images/sequence-diagram.svg)
+![Diagrama de Sequência](public/images/sequence_diagram_product.svg)
 
 ## **Licença**
 Este projeto está licenciado sob a [MIT License](LICENSE).
