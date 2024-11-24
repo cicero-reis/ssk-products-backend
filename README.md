@@ -137,6 +137,23 @@ Se você estiver utilizando o **Swagger UI** para exibir a documentação intera
 
 ![Diagrama de Sequência](public/images/sequence_diagram_product.svg)
 
+## **Testes da API**
+
+A URL abaixo pode ser usada para acessar os testes da API:
+
+- **Testes de Funcionalidade**: [http://localhost:5000/tests/Feature/Reports/](http://localhost:5000/tests/Feature/Reports/)
+
+Essa URL fornecerá acesso aos testes específicos da funcionalidade, permitindo verificar os relatórios de forma detalhada. Os testes são realizados através de endpoints de teste configurados no servidor local.
+
+### Como rodar os testes localmente
+
+1. **Inicie a aplicação**:
+   Execute sua aplicação no ambiente local:
+   ```bash
+   docker exec -it app bash
+   npm run test
+
+
 ## **Licença**
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
