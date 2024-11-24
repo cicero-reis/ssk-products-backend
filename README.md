@@ -113,6 +113,10 @@ terraform/           # Configuração de infraestrutura com Terraform.
 | GET    | `/api/products/{id}/files`         | Lista imagens do produto.        |
 | DELETE | `/api/products/images/{id}/files`  | Remove uma imagem específica.    |
 
+## Fluxo de Requisição: Obter Produtos
+
+![Diagrama de Sequência](public/images/sequence-diagram.svg)
+
 ## **Licença**
 Este projeto está licenciado sob a [MIT License](LICENSE).
 
