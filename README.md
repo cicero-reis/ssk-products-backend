@@ -156,8 +156,8 @@ app/
 ├── Presentation/    # Rotas e controladores da API.
 ├── IoC/             # Responsável por centralizar as configurações de Inversão de Controle (IoC)
 docker-compose.yml   # Configuração dos contêineres.
-terraform/           # Configuração de infraestrutura com Terraform.
 .env.example         # Arquivo de exemplo para configuração de variáveis.
+...
 ```
 
 ---
