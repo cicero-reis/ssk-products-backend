@@ -15,7 +15,7 @@ volumes:
 
 services:
   app:
-    image: ciceroreis/php8.2:latest
+    image: self-service-kiosks-app:latest
     container_name: app
     restart: unless-stopped
     environment:
@@ -30,7 +30,7 @@ services:
       - catalog_network
 
   nginx:
-    image: ciceroreis/nginx.alpine:latest
+    image: self-service-kiosks-nginx:latest
     container_name: nginx
     restart: unless-stopped
     ports:
