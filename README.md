@@ -54,7 +54,7 @@ Antes de iniciar, verifique se você possui as seguintes ferramentas instaladas:
 ## **Configuração e Execução**
 ### **1. Clone o repositório:**
 ```bash
-git clone https://github.com/seu-usuario/ssk-products-backend.git
+git clone https://github.com/cicero-reis/ssk-products-backend.git
 cd ssk-products-backend
 ```
 
