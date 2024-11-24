@@ -1,16 +1,16 @@
 version: "3.8"
 
 networks:
-  catalog_network:
-    name: catalog_network
+  product_network:
+    name: product_network
     driver: bridge
 
 volumes:
-  catalog_mysql:
-    name: catalog_mysql
+  product_mysql:
+    name: product_mysql
     driver: local
-  catalog_localstack:
-    name: catalog_localstack
+  product_localstack:
+    name: product_localstack
     driver: local
 
 services:
@@ -27,7 +27,7 @@ services:
       - mysql
       - nginx
     networks:
-      - catalog_network
+      - product_network
 
   nginx:
     image: self-service-kiosks-nginx:latest
@@ -38,7 +38,7 @@ services:
     volumes:
       - ./:/var/www
     networks:
-      - catalog_network
+      - product_network
 
   mysql:
     image: mysql:8.0
@@ -56,9 +56,9 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - catalog_mysql:/var/lib/mysql
+      - product_mysql:/var/lib/mysql
     networks:
-      - catalog_network
+      - product_network
 
   localstack:
     image: localstack/localstack
@@ -69,7 +69,7 @@ services:
     environment:
       - DEBUG=${DEBUG:-0}
     volumes:
-      - catalog_localstack:/var/lib/localstack"
+      - product_localstack:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks: 
-      - catalog_network
+      - product_network
