@@ -9,18 +9,18 @@ use Slim\App;
 return function (App $app) {
 
     $app->group(
-        '/api/catalog',
+        '/api',
         function ($app) {
 
-            $app->post('/product/search', ProductController::class . ':index');
-            $app->get('/product/{id}', ProductController::class . ':show');
+            $app->post('/products/search', ProductController::class . ':index');
+            $app->get('/products/{id}', ProductController::class . ':show');
             $app->post('/product', ProductController::class . ':create');
-            $app->put('/product/{id}', ProductController::class . ':update');
-            $app->delete('/product/{id}', ProductController::class . ':delete');
+            $app->put('/products/{id}', ProductController::class . ':update');
+            $app->delete('/products/{id}', ProductController::class . ':delete');
 
-            $app->post('/product/{productId}/file', ProductFileStorageController::class . ':uploadFile');
-            $app->get('/product/{productId}/file', ProductFileStorageController::class . ':getFile');
-            $app->delete('/product/{productId}/file', ProductFileStorageController::class . ':deleteFile');
+            $app->post('/products/{productId}/file', ProductFileStorageController::class . ':uploadFile');
+            $app->get('/products/{productId}/file', ProductFileStorageController::class . ':getFile');
+            $app->delete('/products/{productId}/file', ProductFileStorageController::class . ':deleteFile');
         }
     );
 

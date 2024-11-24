@@ -113,6 +113,26 @@ terraform/           # Configuração de infraestrutura com Terraform.
 | GET    | `/api/products/{id}/files`         | Lista imagens do produto.        |
 | DELETE | `/api/products/images/{id}/files`  | Remove uma imagem específica.    |
 
+Para adicionar o link da **API** para gerenciar produtos no seu README, você pode simplesmente incluir uma seção explicando como acessar a documentação da API (gerada pelo Swagger ou outra ferramenta de documentação OpenAPI). Aqui está um exemplo de como fazer isso:
+
+---
+
+## **Documentação da API**
+
+A API para gerenciar os produtos pode ser acessada localmente através da seguinte URL:
+
+- **Documentação da API**: [http://localhost:5000/docs/openapi.json](http://localhost:5000/docs/openapi.json)
+
+Essa URL fornece o arquivo **OpenAPI** da documentação da API, permitindo que você visualize e interaja com os endpoints da API para gerenciamento de produtos.
+
+### **Como acessar a documentação interativa (Swagger UI)**
+
+Se você estiver utilizando o **Swagger UI** para exibir a documentação interativa da API, ela pode ser acessada no seguinte endereço:
+
+- **Swagger UI**: [http://localhost:5000/docs](http://localhost:5000/docs)
+
+---
+
 ## Fluxo de Requisição: Obter Produtos
 
 ![Diagrama de Sequência](public/images/sequence_diagram_product.svg)
