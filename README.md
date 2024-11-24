@@ -64,20 +64,86 @@ Crie um arquivo `.env` com base no `.env.example` e configure:
 - Configurações do banco de dados.
 - Porta de execução.
 
-### **3. Suba os contêineres com Docker Compose:**
-```bash
-docker-compose up --build
-```
+Para organizar e documentar os passos de criação e execução das imagens Docker no seu projeto, você pode criar as imagens `Dockerfile.app` e `Dockerfile.nginx` na pasta `infra/docker` e, em seguida, executar o `docker-compose up -d` a partir da pasta raiz. No seu `README.md`, você pode adicionar um guia passo a passo para isso.
 
-### **4. Aplique a infraestrutura com Terraform (opcional):**
-```bash
-cd terraform
-terraform init
-terraform apply
-```
+Aqui está uma sugestão de como documentar o processo no `README.md`:
+
+---
+
+## **Configuração e Execução com Docker**
+
+Este projeto utiliza o **Docker** para facilitar a execução dos serviços, como a aplicação e o servidor **Nginx**. Siga as etapas abaixo para construir e rodar os containers.
+
+### Estrutura de Diretórios
+
+Dentro da pasta `infra/docker`, você terá dois arquivos **Dockerfile**:
+- `Dockerfile.app`: Para a aplicação.
+- `Dockerfile.nginx`: Para o servidor Nginx.
+
+### Passo 1: Criar as Imagens Docker
+
+Primeiro, crie as imagens Docker utilizando os arquivos `Dockerfile.app` e `Dockerfile.nginx`.
+
+1. Navegue até a pasta `infra/docker`:
+
+    ```bash
+    cd infra/docker
+    ```
+
+2. **Construir a imagem da aplicação** (`Dockerfile.app`):
+
+    ```bash
+    docker build -t self-service-kiosks-app -f Dockerfile.app .
+    ```
+
+3. **Construir a imagem do Nginx** (`Dockerfile.nginx`):
+
+    ```bash
+    docker build -t self-service-kiosks-nginx -f Dockerfile.nginx .
+    ```
+
+### Passo 2: Subir os Containers com Docker Compose
+
+Depois de construir as imagens, volte para a raiz do projeto e execute o `docker-compose` para iniciar os containers.
+
+1. **Volte para a pasta raiz** do projeto:
+
+    ```bash
+    cd ../../
+    ```
+
+2. **Execute os containers** em segundo plano (modo `detached`):
+
+    ```bash
+    docker-compose up -d
+    ```
+
+Isso irá iniciar todos os serviços configurados no seu arquivo `docker-compose.yml`, incluindo a aplicação e o servidor **Nginx**.
+
+### Passo 3: Acessar os Serviços
+
+Após os containers estarem em execução, você pode acessar os serviços da seguinte maneira:
+
+- **Aplicação**: Acesse a aplicação em `http://localhost:5000` (ou na porta configurada no seu `docker-compose.yml`).
+- **Servidor Nginx**: O Nginx estará disponível na URL configurada, por exemplo, `http://localhost:80`.
+
+---
+
+### **4. Aplique a infraestrutura com Terraform:**
+
+1. Navegue até a pasta `infra/terraform`:
+
+    ```bash
+    cd infra/terraform
+    terraform init
+    terraform fmt
+    terraform validate
+    terraform plan -out=plan.out
+    terraform apply "plan.out"
+    ```
 
 ### **5. Acesse o microserviço:**
-A API estará disponível em: `http://localhost:8080`
+A API estará disponível em: `http://localhost:5000`
 
 ---
 
