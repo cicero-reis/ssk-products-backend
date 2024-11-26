@@ -66,8 +66,6 @@ Crie um arquivo `.env` com base no `.env.example` e configure:
 
 Para organizar e documentar os passos de criação e execução das imagens Docker no seu projeto, você pode criar as imagens `Dockerfile.app` e `Dockerfile.nginx` na pasta `infra/docker` e, em seguida, executar o `docker-compose up -d` a partir da pasta raiz. No seu `README.md`, você pode adicionar um guia passo a passo para isso.
 
-Aqui está uma sugestão de como documentar o processo no `README.md`:
-
 ---
 
 ## **Configuração e Execução com Docker**
