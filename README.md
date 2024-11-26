@@ -179,8 +179,6 @@ docker-compose.yml   # Configuração dos contêineres.
 | GET    | `/api/products/{id}/files`         | Lista imagens do produto.        |
 | DELETE | `/api/products/images/{id}/files`  | Remove uma imagem específica.    |
 
-Para adicionar o link da **API** para gerenciar produtos no seu README, você pode simplesmente incluir uma seção explicando como acessar a documentação da API (gerada pelo Swagger ou outra ferramenta de documentação OpenAPI). Aqui está um exemplo de como fazer isso:
-
 ---
 
 ## **Documentação da API**
